@@ -157,8 +157,9 @@ export const deleteCoupon = async (req,res) =>{
 
 export const getAllCoupon = async (req , res) =>{
     try {
-        const coupons = await Coupon.find().populate('category').populate('brand') .sort({ createdAt: 1 });;
-        res.status(200).json({message:"Coupons Fetched Successfully",data:coupons})
+        const coupons = await Coupon.find().populate('category').populate('brand') .sort({ createdAt: 1 });
+        const data = coupons.reverse();
+        res.status(200).json({message:"Coupons Fetched Successfully",data:data})
     } catch (error) {
         console.log(error);
         res.status(404).json({message:"Server Error"});
@@ -170,7 +171,8 @@ export const getCouponByCategorySlug = async (req , res) =>{
     try {
       const category = await Category.findOne({slug:req.params.slug})
         const coupons = await Coupon.find({category:category?._id}).populate('category').populate("brand") .sort({ createdAt: 1 });;
-        res.status(200).json({message:"Coupons Fetched Successfully",data:coupons})
+        const data = coupons.reverse()
+        res.status(200).json({message:"Coupons Fetched Successfully",data:data})
     } catch (error) {
         console.log(error);
         res.status(404).json({message:"Server Error"});
