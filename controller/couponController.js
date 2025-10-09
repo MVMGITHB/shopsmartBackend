@@ -41,11 +41,11 @@ export const getCouponsByBrandSlug = async(req,res)=>{
             return res.status(400).json("brand not found")
           }
 
-          const coupons = await Coupon.find({brand:brand._id}).populate("category").populate("brand") .sort({ createdAt: 1 });;
-
+          const coupons = await Coupon.find({brand:brand._id}).populate("category").populate("brand") .sort({ createdAt: 1 });
+          const data = coupons.reverse()
           res.status(200).json({
             message:"coupons fetch successfully",
-            coupons:coupons
+            coupons:data
           })
       } catch (error) {
           console.log(error);
