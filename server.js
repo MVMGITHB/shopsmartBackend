@@ -23,7 +23,7 @@ app.use(cors({
       "http://localhost:5173","https://shopsmaart.com/",
       "https://shopsmaart.com",
       "https://couponsculture.com/",
-      "https://couponsculture.com"
+      "https://couponsculture.com",
       "https://shop-smar-admin.vercel.app/","https://shop-smar-admin.vercel.app"],
   credentials: true
 }))
