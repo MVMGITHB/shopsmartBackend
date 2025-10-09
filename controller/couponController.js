@@ -1,7 +1,7 @@
 import Coupon from "../model/couponSchema.js";
 import slugify from 'slugify';
 import Category from '../model/CatagoryModel.js'
-
+import Brand from '../model/brandModel.js'
 
 export const createCoupon = async (req, res) => {
   try {
@@ -33,6 +33,28 @@ export const createCoupon = async (req, res) => {
       .json({ message: "Error creating coupon", error: error });
   }
 };
+
+export const getCouponsByBrandSlug = async(req,res)=>{
+      try {
+          const brand = await Brand.findOne({slug:req.params.slug})
+          if(!brand){
+            return res.status(400).json("brand not found")
+          }
+
+          const coupons = await Coupon.find({brand:brand._id}).populate("category").populate("brand");
+
+          res.status(200).json({
+            message:"coupons fetch successfully",
+            coupons:coupons
+          })
+      } catch (error) {
+          console.log(error);
+       return res
+      .status(500)
+      .json({ message: "Error creating coupon", error: error });
+  
+      }
+}
 
 export const updateCoupon = async (req, res) => {
   try {

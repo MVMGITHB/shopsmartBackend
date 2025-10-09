@@ -2,6 +2,7 @@
 import Brand from '../model/brandModel.js';
 import slugify from 'slugify';
 
+
 // ✅ Create a new brand
 export const createBrand = async (req, res) => {
   try {
