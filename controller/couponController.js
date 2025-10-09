@@ -41,7 +41,7 @@ export const getCouponsByBrandSlug = async(req,res)=>{
             return res.status(400).json("brand not found")
           }
 
-          const coupons = await Coupon.find({brand:brand._id}).populate("category").populate("brand");
+          const coupons = await Coupon.find({brand:brand._id}).populate("category").populate("brand") .sort({ createdAt: -1 });;
 
           res.status(200).json({
             message:"coupons fetch successfully",
@@ -157,7 +157,7 @@ export const deleteCoupon = async (req,res) =>{
 
 export const getAllCoupon = async (req , res) =>{
     try {
-        const coupons = await Coupon.find().populate('category').populate('brand');
+        const coupons = await Coupon.find().populate('category').populate('brand') .sort({ createdAt: -1 });;
         res.status(200).json({message:"Coupons Fetched Successfully",data:coupons})
     } catch (error) {
         console.log(error);
@@ -169,7 +169,7 @@ export const getAllCoupon = async (req , res) =>{
 export const getCouponByCategorySlug = async (req , res) =>{
     try {
       const category = await Category.findOne({slug:req.params.slug})
-        const coupons = await Coupon.find({category:category?._id}).populate('category').populate("brand");
+        const coupons = await Coupon.find({category:category?._id}).populate('category').populate("brand") .sort({ createdAt: -1 });;
         res.status(200).json({message:"Coupons Fetched Successfully",data:coupons})
     } catch (error) {
         console.log(error);
