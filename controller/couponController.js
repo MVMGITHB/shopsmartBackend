@@ -109,7 +109,7 @@ try {
         { description1: { $in: [regex] } }, // array of strings
         { category: { $in: categoryIds } }  // match category by ID
       ],
-    }).populate("category"); // optional: populate category details
+    }).populate("category").populate("brand"); // optional: populate category details
 
     res.json(results);
   } catch (error) {
@@ -147,7 +147,7 @@ export const getAllCoupon = async (req , res) =>{
 export const getCouponByCategorySlug = async (req , res) =>{
     try {
       const category = await Category.findOne({slug:req.params.slug})
-        const coupons = await Coupon.find({category:category?._id}).populate('category');
+        const coupons = await Coupon.find({category:category?._id}).populate('category').populate("brand");
         res.status(200).json({message:"Coupons Fetched Successfully",data:coupons})
     } catch (error) {
         console.log(error);
