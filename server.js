@@ -10,6 +10,9 @@ import dealOnFireRoutes from './route/dealOnFireRoutes.js';
 import brandRoutes from './route/brandRoutes.js';
 import topDealRoutes from './route/topDealRoutes.js'
 import bestDealRoutes from "./route/bestDealRoutes.js";
+import blogRoutes from "./route/blogRoutes.js";
+
+import tagRoutes from './route/tagRoutes.js'
 
 dotenv.config();
 
@@ -45,6 +48,8 @@ app.use("/api/dealOnFire", dealOnFireRoutes);
 app.use('/api/brands', brandRoutes);
 app.use('/api/top-deals', topDealRoutes);
 app.use("/api/best-deals", bestDealRoutes);
+app.use("/api/blog", blogRoutes);
+app.use("/api/tag", tagRoutes);
 
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to the server</h1>');
