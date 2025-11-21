@@ -28,6 +28,11 @@ app.use(cors({
       "https://shopsmaart.com",
       "https://couponsculture.com/",
       "https://couponsculture.com",
+      "https://dailynewzmail.com/",
+      "https://jobkityaari.com/",
+      "https://trendingstori.com/",
+      "https://supernpro.com/",
+      "https://fgstmails.com/",
       "https://shop-smar-admin.vercel.app/","https://shop-smar-admin.vercel.app"],
   credentials: true
 }))
