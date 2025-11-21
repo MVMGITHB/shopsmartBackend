@@ -34,6 +34,7 @@ app.use(cors({
       "https://supernpro.com/",
       "https://fgstmails.com/",
       "http://localhost:4000/",
+      "http://localhost:4000",
       "https://shop-smar-admin.vercel.app/","https://shop-smar-admin.vercel.app"],
   credentials: true
 }))
