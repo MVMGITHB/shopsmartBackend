@@ -11,6 +11,7 @@ import brandRoutes from './route/brandRoutes.js';
 import topDealRoutes from './route/topDealRoutes.js'
 import bestDealRoutes from "./route/bestDealRoutes.js";
 import blogRoutes from "./route/blogRoutes.js";
+import popupRoutes from "./route/popup.routes.js";
 
 import tagRoutes from './route/tagRoutes.js'
 
@@ -30,6 +31,7 @@ app.use(cors({
       "https://shop-smar-admin.vercel.app/","https://shop-smar-admin.vercel.app"],
   credentials: true
 }))
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 connectDB(DATABASE)
@@ -50,6 +52,7 @@ app.use('/api/top-deals', topDealRoutes);
 app.use("/api/best-deals", bestDealRoutes);
 app.use("/api/blog", blogRoutes);
 app.use("/api/tag", tagRoutes);
+app.use("/api/popup", popupRoutes);
 
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to the server</h1>');

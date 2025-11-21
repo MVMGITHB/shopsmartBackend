@@ -27,6 +27,7 @@ router.patch('/toggled/:id', updateStatus);
 
 // Delete a category by ID
 router.delete('/delete-categories/:id', deleteCategory);
+
 router.post("/uploadImage", upload.single("image"), uploadImage );
 
 export default router;

@@ -5,10 +5,14 @@ import Category from '../model/CatagoryModel.js'
 // Create Blog
 export const createBlog = async (req, res) => {
   try {
+    
+    
     const blog = new Blog({
       ...req.body,
       slug: slugify(req?.body?.slug).toLowerCase(),
     });
+
+
     await blog.save();
     res.status(201).json(blog);
   } catch (err) {
