@@ -16,6 +16,13 @@ const popupSchema = new mongoose.Schema(
             type: [String],
             default: [],
         },
+
+       popPuptype:{
+    type: String,
+    enum: ['image', 'video']
+},
+
+
         status: {
             type: String,
             enum: ["Active", "Inactive"],
